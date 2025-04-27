@@ -231,3 +231,18 @@ class GPTModel(nn.Module):
         ## Embedding space to vocab space
         logits = self.out_head(x)
         return logits
+    
+def generate_text_simple(model, idx, max_new_tokens, context_size):
+
+    for _ in range(max_new_tokens):
+        # Crops current context if it exceeds the supported context size, e.g., if LLM supports only 5 tokens, and the context size is 10, then only the last 5 tokens are used as context
+        idx_cropped = idx[:, -context_size:]
+        with torch.no_grad():
+            logits = model(idx_cropped)
+
+        logits = logits[:, -1, :]
+        probs = torch.softmax(logits, dim=-1)
+        idx_next = torch.argmax(probs, dim=-1, keepdim=True)
+        idx = torch.cat((idx, idx_next), dim=-1)
+
+    return idx
