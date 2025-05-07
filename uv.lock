@@ -478,6 +478,7 @@ dependencies = [
     { name = "black" },
     { name = "matplotlib" },
     { name = "pre-commit" },
+    { name = "tensorboard" },
     { name = "tensorflow" },
 ]
 
@@ -486,6 +487,7 @@ requires-dist = [
     { name = "black", specifier = ">=25.1.0" },
     { name = "matplotlib", specifier = ">=3.10.1" },
     { name = "pre-commit", specifier = ">=4.2.0" },
+    { name = "tensorboard", specifier = ">=2.18.0" },
     { name = "tensorflow", specifier = "==2.18" },
 ]
 
