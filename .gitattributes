@@ -1,0 +1,4 @@
+*.ckpt.* filter=lfs diff=lfs merge=lfs -text
+*.json filter=lfs diff=lfs merge=lfs -text
+*.bpe filter=lfs diff=lfs merge=lfs -text
+notebooks/05.[[:space:]]Pretraining[[:space:]]on[[:space:]]unlabeled[[:space:]]data/gpt2/124M/* filter=lfs diff=lfs merge=lfs -text
